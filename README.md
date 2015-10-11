@@ -7,7 +7,7 @@ and add a flight to user's "My Flights" list.
 *This is preview version of the API so please let us know any comments you have*
 
 For now only iOS is supported (starting from App in the Air 5.1),
-Android coming soon ([email us](mailto:support@appintheair.mobi) to get early access).
+Android support would start from App in the Air 2.2.0 ([email us](mailto:support@appintheair.mobi) to get early access).
 
 ## iOS Implementation ##
 A flight can be added using `appintheair://` URL Scheme.
@@ -87,7 +87,7 @@ Preferred size: 135x40 pts (270x80 px for @2x)
 
 ## Android Implementation ##
 
-Params is the same, implementation and design are different.
+Params is the same, implementation and design guidelines are different.
 
 ### Example usage ###
 ```
