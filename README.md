@@ -9,7 +9,7 @@ and add a flight to user's "My Flights" list.
 For now only iOS is supported (starting from App in the Air 5.1),
 Android coming soon ([email us](mailto:support@appintheair.mobi) to get early access).
 
-## Implementation ##
+## iOS Implementation ##
 A flight can be added using `appintheair://` URL Scheme.
 
 Host URL will look like: `appintheair://trip`.
@@ -27,6 +27,7 @@ Before presenting "Track Flight" button in your UI you probably should check if 
 | `flight[0].carrier`    | `AA`           | carrier code (prefers iata, but icao is ok)        |
 | `flight[0].departure`  | `1445580900`   | LOCAL departure datetime                           |
 | `flight[0].arrival  `  | `1445583600`   | LOCAL arrival datetime                             |
+| `amount`               | `1`            | flights number                                     |
 
 **Optional Params (TBD)**
 
@@ -82,3 +83,27 @@ Preferred size: 135x40 pts (270x80 px for @2x)
 
 ### Example usage ###
 **TDB example screen from andgo.travel**
+
+
+## Android Implementation ##
+
+Params is the same, implementation and design are different.
+
+### Example usage ###
+```
+#!java
+Intent intent = new Intent();
+intent.setData(Uri.parse("appintheair://trip"));
+intent.setAction(Intent.ACTION_VIEW);
+intent.putExtra("param_1", "value_1");
+startActivity(intent);
+```
+
+## Design Guidelines ##
+You should place the button on the final screen of your booking flow, i.e. after the user's booked the flight. 
+You must use our logo in your button. Our 'primary' color: #3295ba. Our 'accent' color: #1eaaf1. Those colors are also part of our brand, so you should use one of them.
+In the next few weeks we would be able to share with you examples for flat and raised buttons respectively.
+
+
+### Important note ###
+Before submitting your app to the AppStore or Play Store you must send us your app description, screenshots of your interface with one of our buttons and your url-scheme (`source` param) to [support@appintheair.mobi](mailto:support@appintheair.mobi) in order to be whitelisted by our app.
