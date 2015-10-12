@@ -86,6 +86,8 @@ GET https://www.appintheair.mobi/api/prepare_deeplink?link=trip?source=test%26us
 
 In response you'll get JSON with `url` key. This url you should open when the user taps the button.
 
+This behavior works with App in the Air iOS 5.1.3 and $$$TBD$$$ Android.
+
 ## iOS Design Guidelines ##
 You should place the button on the final screen of your booking flow, i.e. after the user's booked the flight.
 
