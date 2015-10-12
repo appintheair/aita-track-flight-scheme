@@ -27,7 +27,8 @@ Android support would start from App in the Air 2.2.0 ([email us](mailto:support
 
 | Param name             | Value          | Comment                                               |
 | ---------------------- | -------------- | ----------------------------------------------------- |
-| `user`                 | `USERID`       | your user-id in order for cross-promo (contact us )   |
+| `user`                 | `USERID`       | your user-id in order for cross-promo (contact us)    |
+| `phone`                | `XYYYZZZZZZZ`  | user's phone number: <COUNTRYCODE><NUMBER> (omit '+') |
 | `flight[0].bookRef`    | `FAK3BR`       | booking reference code                                |
 | `flight[0].seat`       | `13A`          | seat number                                           |
 | `flight[0].fare`       | `Y`            | fare that was used to book a flight (acc. to airline) |
