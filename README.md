@@ -39,8 +39,6 @@ A flight can be added using `appintheair://` URL Scheme.
 
 Host URL will look like: `appintheair://trip`.
 
-Before presenting "Track Flight" button in your UI you probably should check if App in the Air is installed on the current device using `UIApplication.sharedApplication().canOpenURL(url)` call.
-
 Don't forget to make it url-safe before passing to `canOpenURL:` or `openURL:`.
 
 Example URL:
@@ -70,6 +68,23 @@ intent.setAction(Intent.ACTION_VIEW);
 intent.putExtra("param_1", "value_1");
 startActivity(intent);
 ```
+
+## Note on Deeplinks ##
+Before presenting "Track Flight" button in your UI you probably should check if App in the Air is installed on the current device using `UIApplication.sharedApplication().canOpenURL(url)` call for iOS and $$$TBD$$$ for Android.
+
+If App in the Air is not installed on the device, you can generate a url which will lead the user to the store and then to the newly installed app keeping parameters in mind (so the user will have a trip added after 'clean' install).
+
+To do this you need to make
+```
+GET https://www.appintheair.mobi/api/prepare_deeplink?link=LINK
+LINK -> your generated link without url-scheme (i.e. trip?source=XXX&...)
+```
+Example:
+```
+GET https://www.appintheair.mobi/api/prepare_deeplink?link=trip?source=test%26user=test%26flight%5B0%5D.from=SVO%26flight%5B0%5D.to=KJA%26flight%5B0%5D.number=1480%26flight%5B0%5D.carrier=SU%26flight%5B0%5D.departure=1448311500%26flight%5B0%5D.arrival=1448343000%26flight%5B0%5D.bookRef=FAK3BR%26flight%5B0%5D.seat=13A%26flight%5B0%5D.fare=Y%26flight%5B0%5D.class=Economy
+```
+
+In response you'll get JSON with `url` key. This url you should open when the user taps the button.
 
 ## iOS Design Guidelines ##
 You should place the button on the final screen of your booking flow, i.e. after the user's booked the flight.
