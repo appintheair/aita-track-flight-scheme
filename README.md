@@ -93,6 +93,8 @@ You should place the button on the final screen of your booking flow, i.e. after
 
 Blue button if the preferred one, but you can also use white / black depending on your screen background.
 
+> Custom design is also possible, but you should write us to approve it first.
+
 Preferred size: 135x40 pts (270x80 px for @2x)
 
 ![](http://spronin.github.io/img/aita-track-en/aita_blue_en.png)
@@ -112,6 +114,9 @@ Preferred size: 135x40 pts (270x80 px for @2x)
 **[russian .svg](http://spronin.github.io/svg/SVG_RU_Outlined.zip)**
 
 ### Example usage ###
+**Svyaznoy Travel**
+
+![](http://spronin.github.io/img/aita-example/stravel.png)
 **TDB example screen from andgo.travel**
 
 ## Android Design Guidelines ##
