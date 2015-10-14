@@ -117,6 +117,7 @@ Preferred size: 135x40 pts (270x80 px for @2x)
 **Svyaznoy Travel**
 
 ![](http://spronin.github.io/img/aita-example/stravel.png)
+
 **TDB example screen from andgo.travel**
 
 ## Android Design Guidelines ##
