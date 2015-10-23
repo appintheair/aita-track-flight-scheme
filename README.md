@@ -72,6 +72,7 @@ intent.setData(builder.build());
 intent.setAction(Intent.ACTION_VIEW);
 startActivity(intent);
 ```
+Remember, that Uri builds and parses URI references which conform to RFC 2396. So you sould avoid symbols "{" | "}" | "|" | "\" | "^" | "[" | "]" | ""`. In our case you can just dismiss them.
 
 
 ## Note on Deeplinks ##
