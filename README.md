@@ -134,3 +134,15 @@ In the next few weeks we would be able to share with you examples for flat and r
 
 ## Important note ##
 Before submitting your app to the AppStore or Play Store you must send us your app description, screenshots of your interface with one of our buttons and your url-scheme (`source` param) to [support@appintheair.mobi](mailto:support@appintheair.mobi) in order to be whitelisted by our app.
+
+
+### Android add flight action tracking ###
+Since 2.2.4 in Android you can configure BroadcastReceiver to receive information about flight, that was added inside App in the Air. 
+```!xml 
+         <receiver android:name="YourEventReceiver" >
+            <intent-filter>
+                <action android:name="com.aita.android.addflightbroadcast" />
+            </intent-filter>
+        </receiver>
+```
+In the intent data there would be Flight object with Parcelable interface implemented. You can obtain that class in our repository at GitHub after 31 Oct, or you can ([email us](mailto:support@appintheair.mobi) to get early access
