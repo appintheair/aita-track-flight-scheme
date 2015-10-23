@@ -6,8 +6,8 @@ and add a flight to user's "My Flights" list.
 
 *This is preview version of the API so please let us know any comments you have*
 
-For now only iOS is supported (starting from App in the Air 5.1),
-Android support would start from App in the Air 2.2.3 ([email us](mailto:support@appintheair.mobi) to get early access).
+For now both iOS (starting from App in the Air 5.1) and Android(starting from App in the Air 2.2.3) is supported.
+
 
 ## Params ##
 **Required Params**
@@ -87,7 +87,7 @@ LINK -> your generated link without url-scheme (i.e. trip?source=XXX&...)
 ```
 Example:
 ```
-GET https://www.appintheair.mobi/api/prepare_deeplink?link=trip?source=test%26user=test%26flight%5B0%5D.from=SVO%26flight%5B0%5D.to=KJA%26flight%5B0%5D.number=1480%26flight%5B0%5D.carrier=SU%26flight%5B0%5D.departure=1448311500%26flight%5B0%5D.arrival=1448343000%26flight%5B0%5D.bookRef=FAK3BR%26flight%5B0%5D.seat=13A%26flight%5B0%5D.fare=Y%26flight%5B0%5D.class=Economy
+GET https://www.appintheair.mobi/api/prepare_deeplink?link=trip?source=test%26user=test%26flight%5B0%5D.from=SVO%26flight%5B0%5D.to=KJA%26flight%5B0%5D.number=1480%26flight%5B0%5D.carrier=SU%26flight%5B0%5D.departure=1448311500%26flight%5B0%5D.arrival=1448343000%26flight%5B0%5D.bookRef=FAK3BR%26flight%5B0%5D.seat=13A%26flight%5B0%5D.fare=Y%26flight%5B0%5D.class=Economy%26count=1
 ```
 
 In response you'll get JSON with `url` key. This url you should open when the user taps the button.
