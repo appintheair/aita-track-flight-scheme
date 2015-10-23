@@ -1,13 +1,13 @@
 # App in the Air "Track Flight" Button
 
-The main purpose of the repo is to allow booking app developers
+The main purpose of the repository is to allow booking app developers
 integrate "Track Flight" button which will open installed "App in the Air" app
 and add a flight to user's "My Flights" list.
 
 *This is preview version of the API so please let us know any comments you have*
 
 For now only iOS is supported (starting from App in the Air 5.1),
-Android support would start from App in the Air 2.2.0 ([email us](mailto:support@appintheair.mobi) to get early access).
+Android support would start from App in the Air 2.2.3 ([email us](mailto:support@appintheair.mobi) to get early access).
 
 ## Params ##
 **Required Params**
@@ -57,20 +57,25 @@ If you don't have such key you can add it like this:
 
 ## Android Implementation ##
 
-Params is the same, implementation and design guidelines are different.
+Params is the same, implementation and design guidelines are quite the same.
 
 ### Example usage ###
 ```
 #!java
+
+Uri.Builder builder = new Uri.Builder();
+builder.scheme("appintheair");
+builder.path("trip");
+builder.appendQueryParameter("param_1", "value_1");
 Intent intent = new Intent();
-intent.setData(Uri.parse("appintheair://trip"));
+intent.setData(builder.build());
 intent.setAction(Intent.ACTION_VIEW);
-intent.putExtra("param_1", "value_1");
 startActivity(intent);
 ```
 
+
 ## Note on Deeplinks ##
-Before presenting "Track Flight" button in your UI you probably should check if App in the Air is installed on the current device using `UIApplication.sharedApplication().canOpenURL(url)` call for iOS and $$$TBD$$$ for Android.
+Before presenting "Track Flight" button in your UI you probably should check if App in the Air is installed on the current device using `UIApplication.sharedApplication().canOpenURL(url)` call for iOS. For Android the safest way would be to handle exception when you call 'startActivity(intent);'.
 
 If App in the Air is not installed on the device, you can generate a url which will lead the user to the store and then to the newly installed app keeping parameters in mind (so the user will have a trip added after 'clean' install).
 
@@ -86,7 +91,7 @@ GET https://www.appintheair.mobi/api/prepare_deeplink?link=trip?source=test%26us
 
 In response you'll get JSON with `url` key. This url you should open when the user taps the button.
 
-This behavior works with App in the Air iOS 5.1.3 and $$$TBD$$$ Android.
+This behavior works with App in the Air iOS 5.1.3 and 2.2.3 Android.
 
 ## iOS Design Guidelines ##
 You should place the button on the final screen of your booking flow, i.e. after the user's booked the flight.
