@@ -72,7 +72,7 @@ intent.setData(builder.build());
 intent.setAction(Intent.ACTION_VIEW);
 startActivity(intent);
 ```
-Remember, that Uri builds and parses URI references which conform to RFC 2396. So you sould avoid symbols "{" | "}" | "|" | "\" | "^" | "[" | "]" | ""`. In our case you can just dismiss them.
+Remember, that Uri builds and parses URI references which conform to RFC 2396. So you sould avoid symbols "{" | "}" | "|" | "\" | "^" | "[" | "]" | "". In our case you can just dismiss them.
 
 
 ## Note on Deeplinks ##
@@ -93,6 +93,20 @@ GET https://www.appintheair.mobi/api/prepare_deeplink?link=trip?source=test%26us
 In response you'll get JSON with `url` key. This url you should open when the user taps the button.
 
 This behavior works with App in the Air iOS 5.1.3 and 2.2.3 Android.
+
+### Important note ###
+Don't forget to encode your link before making a request to the API.
+```
+let stringURL = trip?source=aita&flight[0].from=JFK&flight[0].to=LAX&flight[0].number=1377&flight[0].carrier=AA&flight[0].departure=1445580900&flight[0].arrival=1445583600
+
+let encodedURL = stringURL
+  .stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+  .stringByReplacingOccurrencesOfString("&", withString: "%26")
+
+let url = NSURL(string: "https://www.appintheair.mobi/api/prepare_deeplink?link=\(encodedURL)")
+```
+
+Standard platform encoding may not escape '&', so just replace it with '%26'.
 
 ## iOS Design Guidelines ##
 You should place the button on the final screen of your booking flow, i.e. after the user's booked the flight.
@@ -138,8 +152,8 @@ Before submitting your app to the AppStore or Play Store you must send us your a
 
 
 ### Android add flight action tracking ###
-Since 2.2.4 in Android you can configure BroadcastReceiver to receive information about flight, that was added inside App in the Air. 
-```!xml 
+Since 2.2.4 in Android you can configure BroadcastReceiver to receive information about flight, that was added inside App in the Air.
+```!xml
          <receiver android:name="YourEventReceiver" >
             <intent-filter>
                 <action android:name="com.aita.android.addflightbroadcast" />
