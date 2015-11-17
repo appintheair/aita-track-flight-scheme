@@ -6,7 +6,7 @@ and add a flight to user's "My Flights" list.
 
 *This is preview version of the API so please let us know any comments you have*
 
-For now both iOS (starting from App in the Air 5.1) and Android(starting from App in the Air 2.2.3) is supported.
+For now both iOS (starting from App in the Air 5.1) and Android (starting from App in the Air 2.2.3) is supported.
 
 
 ## Params ##
