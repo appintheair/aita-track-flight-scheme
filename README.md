@@ -65,7 +65,7 @@ Params is the same, implementation and design guidelines are quite the same.
 
 Uri.Builder builder = new Uri.Builder();
 builder.scheme("appintheair");
-builder.path("trip");
+builder.authority("trip");
 builder.appendQueryParameter("param_1", "value_1");
 Intent intent = new Intent();
 intent.setData(builder.build());
