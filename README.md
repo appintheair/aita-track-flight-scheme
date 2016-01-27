@@ -32,7 +32,7 @@ For now both iOS (starting from App in the Air 5.1) and Android (starting from A
 | `flight[0].seat`       | `13A`          | seat number                                           |
 | `flight[0].fare`       | `Y`            | fare that was used to book a flight (acc. to airline) |
 | `flight[0].class`      | `Economy`      | class of the ticket                                   |
-If you have more than 1 flight in one trip (multi-leg flight), than supply several flights as `flight[0] flight[1] etc`.
+If you have more than 1 flight in one trip (multi-leg flight or stopover), than supply several flights as `flight[0] flight[1] etc`.
 
 ## iOS Implementation ##
 A flight can be added using `appintheair://` URL Scheme.
@@ -92,7 +92,7 @@ Before presenting "Track Flight" button in your UI you probably should check if 
 
 If App in the Air is not installed on the device, you can generate a url which will lead the user to the store and then to the newly installed app keeping parameters in mind (so the user will have a trip added after 'clean' install).
 
-To do this you need to make
+To do this you need to make a request to the following link:
 ```
 GET https://www.appintheair.mobi/api/prepare_deeplink?link=LINK
 LINK -> your generated link without url-scheme (i.e. trip?source=XXX&...)
@@ -103,6 +103,7 @@ GET https://www.appintheair.mobi/api/prepare_deeplink?link=trip?source=test%26us
 ```
 
 In response you'll get JSON with `url` key. This url you should open when the user taps the button.
+`UIApplication.sharedApplication().openURL(url)`
 
 This behavior works with App in the Air iOS 5.1.3 and 2.2.3 Android.
 
