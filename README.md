@@ -146,13 +146,6 @@ Preferred size: 135x40 pts (270x80 px for @2x)
 
 **[russian .svg](http://spronin.github.io/svg/SVG_RU_Outlined.zip)**
 
-### Example usage ###
-**Svyaznoy Travel**
-
-![](http://spronin.github.io/img/aita-example/stravel.png)
-
-**TDB example screen from andgo.travel**
-
 ## Android Design Guidelines ##
 You should place the button on the final screen of your booking flow, i.e. after the user's booked the flight.
 You must use our logo in your button. Our 'primary' color: #3295ba. Our 'accent' color: #1eaaf1. Those colors are also part of our brand, so you should use one of them.
@@ -162,3 +155,30 @@ In the next few weeks we would be able to share with you examples for flat and r
 
 ## Important note ##
 Before submitting your app to the AppStore or Play Store you must send us your app description, screenshots of your interface with one of our buttons and your url-scheme (`source` param) to [support@appintheair.mobi](mailto:support@appintheair.mobi) in order to be whitelisted by our app.
+
+
+### Featured examples ###
+**Svyaznoy Travel**
+Native app booking confirmation
+
+![](http://spronin.github.io/img/aita-example/stravel.png)
+
+**andgo.travel**
+Native app booking confirmation
+
+![](http://spronin.github.io/img/aita-example/andgo.png)
+
+**Aviasales**
+Native app booking confirmation
+
+![](http://spronin.github.io/img/aita-example/aviasales.jpg)
+
+**Wego**
+Booking confirmation e-mail
+
+![](http://spronin.github.io/img/aita-example/wego.png)
+
+**easyfly.club**
+Flight status webpage
+
+![](http://spronin.github.io/img/aita-example/easyfly.png)
