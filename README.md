@@ -88,27 +88,29 @@ You can obtain that class in our [repository at GitHub](https://github.com/appin
 
 
 ## Note on Deeplinks ##
-Before presenting "Track Flight" button in your UI you probably should check if App in the Air is installed on the current device using `UIApplication.sharedApplication().canOpenURL(url)` call for iOS. For Android the safest way would be to handle exception when you call 'startActivity(intent);'.
+Before presenting "Track Flight" button in your UI you probably should check if App in the Air is installed on the current device using `UIApplication.sharedApplication().canOpenURL(url)` call for iOS. For Android the safest way would be to handle exception when you call `startActivity(intent);`.
 
-If App in the Air is not installed on the device, you can generate a url which will lead the user to the store and then to the newly installed app keeping parameters in mind (so the user will have a trip added after 'clean' install).
+If App in the Air is not installed on the device or you cannot check if it is installed (e.g. on a webpage/email), you can generate a url which will lead the user to the store and then to the newly installed app keeping parameters in mind (so the user will have a trip added after 'clean' install).
 
-To do this you need to make a request to the following link:
+The link has the format:
 ```
-GET https://www.appintheair.mobi/api/prepare_deeplink?link=LINK
+GET https://links.appintheair.mobi/a/key_live_jmcwCsEPIK1Fhb9bqFDawflibpe3hWrO?$deeplink_path=LINK&feature=new_flight&campaign=YOUR_SOURCE
 LINK -> your generated link without url-scheme (i.e. trip?source=XXX&...)
 ```
+Please note that your `source` needs to be passed both in the deeplink (in `$deeplink_path` parameter) and in the `campaign` parameter.
+
 Example:
 ```
-GET https://www.appintheair.mobi/api/prepare_deeplink?link=trip?source=test%26user=test%26flight%5B0%5D.from=SVO%26flight%5B0%5D.to=KJA%26flight%5B0%5D.number=1480%26flight%5B0%5D.carrier=SU%26flight%5B0%5D.departure=1448311500%26flight%5B0%5D.arrival=1448343000%26flight%5B0%5D.bookRef=FAK3BR%26flight%5B0%5D.seat=13A%26flight%5B0%5D.fare=Y%26flight%5B0%5D.class=Economy%26count=1
+GET https://links.appintheair.mobi/a/key_live_jmcwCsEPIK1Fhb9bqFDawflibpe3hWrO?$deeplink_path=trip?source=test%26user=test%26flight%5B0%5D.from=SVO%26flight%5B0%5D.to=KJA%26flight%5B0%5D.number=1480%26flight%5B0%5D.carrier=SU%26flight%5B0%5D.departure=1448311500%26flight%5B0%5D.arrival=1448343000%26flight%5B0%5D.bookRef=FAK3BR%26flight%5B0%5D.seat=13A%26flight%5B0%5D.fare=Y%26flight%5B0%5D.class=Economy%26count=1&feature=new_flight&campaign=test
 ```
 
-In response you'll get JSON with `url` key. This url you should open when the user taps the button.
+You should open this URL when the user taps the button.
 `UIApplication.sharedApplication().openURL(url)`
 
 This behavior works with App in the Air iOS 5.1.3 and 2.2.3 Android.
 
 ### Important note ###
-Don't forget to encode your link before making a request to the API.
+Don't forget to encode the deeplink before embedding it into the URL.
 ```
 let stringURL = trip?source=aita&flight[0].from=JFK&flight[0].to=LAX&flight[0].number=1377&flight[0].carrier=AA&flight[0].departure=1445580900&flight[0].arrival=1445583600
 
@@ -116,7 +118,7 @@ let encodedURL = stringURL
   .stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
   .stringByReplacingOccurrencesOfString("&", withString: "%26")
 
-let url = NSURL(string: "https://www.appintheair.mobi/api/prepare_deeplink?link=\(encodedURL)")
+let url = NSURL(string: "https://links.appintheair.mobi/a/key_live_jmcwCsEPIK1Fhb9bqFDawflibpe3hWrO?$deeplink_path=\(encodedURL)&feature=new_flight&source=aita")
 ```
 
 Standard platform encoding may not escape '&', so just replace it with '%26'.
