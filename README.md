@@ -94,14 +94,14 @@ If App in the Air is not installed on the device or you cannot check if it is in
 
 The link has the format:
 ```
-GET https://links.appintheair.mobi/a/key_live_jmcwCsEPIK1Fhb9bqFDawflibpe3hWrO?$deeplink_path=LINK&feature=new_flight&campaign=YOUR_SOURCE
+GET https://links.appintheair.mobi/a/key_live_jmcwCsEPIK1Fhb9bqFDawflibpe3hWrO?$deeplink_path=LINK&feature=deeplink&channel=new_flight&campaign=YOUR_SOURCE
 LINK -> your generated link without url-scheme (i.e. trip?source=XXX&...)
 ```
 Please note that your `source` needs to be passed both in the deeplink (in `$deeplink_path` parameter) and in the `campaign` parameter.
 
 Example:
 ```
-GET https://links.appintheair.mobi/a/key_live_jmcwCsEPIK1Fhb9bqFDawflibpe3hWrO?$deeplink_path=trip?source=test%26user=test%26flight%5B0%5D.from=SVO%26flight%5B0%5D.to=KJA%26flight%5B0%5D.number=1480%26flight%5B0%5D.carrier=SU%26flight%5B0%5D.departure=1448311500%26flight%5B0%5D.arrival=1448343000%26flight%5B0%5D.bookRef=FAK3BR%26flight%5B0%5D.seat=13A%26flight%5B0%5D.fare=Y%26flight%5B0%5D.class=Economy%26count=1&feature=new_flight&campaign=test
+GET https://links.appintheair.mobi/a/key_live_jmcwCsEPIK1Fhb9bqFDawflibpe3hWrO?$deeplink_path=trip?source=test%26user=test%26flight%5B0%5D.from=SVO%26flight%5B0%5D.to=KJA%26flight%5B0%5D.number=1480%26flight%5B0%5D.carrier=SU%26flight%5B0%5D.departure=1448311500%26flight%5B0%5D.arrival=1448343000%26flight%5B0%5D.bookRef=FAK3BR%26flight%5B0%5D.seat=13A%26flight%5B0%5D.fare=Y%26flight%5B0%5D.class=Economy%26count=1&feature=deeplink&channel=new_flight&campaign=test
 ```
 
 You should open this URL when the user taps the button.
@@ -118,7 +118,7 @@ let encodedURL = stringURL
   .stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
   .stringByReplacingOccurrencesOfString("&", withString: "%26")
 
-let url = NSURL(string: "https://links.appintheair.mobi/a/key_live_jmcwCsEPIK1Fhb9bqFDawflibpe3hWrO?$deeplink_path=\(encodedURL)&feature=new_flight&source=aita")
+let url = NSURL(string: "https://links.appintheair.mobi/a/key_live_jmcwCsEPIK1Fhb9bqFDawflibpe3hWrO?$deeplink_path=\(encodedURL)&feature=deeplink&channel=new_flight&source=aita")
 ```
 
 Standard platform encoding may not escape '&', so just replace it with '%26'.
