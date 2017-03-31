@@ -42,7 +42,7 @@ Host URL will look like: `appintheair://trip`.
 Don't forget to make it url-safe before passing to `canOpenURL:` or `openURL:`.
 
 Example URL:
-`appintheair://trip?source=aita&flight%5B0%5D.from=JFK&flight%5B0%5D.to=LAX&flight%5B0%5D.number=1377&flight%5B0%5D.carrier=AA&flight%5B0%5D.departure=1445580900&flight%5B0%5D.arrival=1445583600`
+`appintheair://trip?source=aita&count=1&flight%5B0%5D.from=JFK&flight%5B0%5D.to=LAX&flight%5B0%5D.number=1377&flight%5B0%5D.carrier=AA&flight%5B0%5D.departure=1445580900&flight%5B0%5D.arrival=1445583600`
 
 ---
 As of iOS9 you need to whitelist app you're going to open using `openURL:` under `LSApplicationQueriesSchemes` key in your `Info.plist` file.
