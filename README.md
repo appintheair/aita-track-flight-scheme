@@ -23,7 +23,7 @@ For now both iOS (starting from App in the Air 5.1) and Android (starting from A
 | `flight[0].arrival  `  | `1445583600`   | LOCAL arrival datetime                             |
 | `count`                | `1`            | number of flights in the current URL               |
 
-**Optional Params (TBD)**
+**Optional Params**
 
 | Param name             | Value          | Comment                                               |
 | ---------------------- | -------------- | ----------------------------------------------------- |
@@ -32,6 +32,7 @@ For now both iOS (starting from App in the Air 5.1) and Android (starting from A
 | `flight[0].seat`       | `13A`          | seat number                                           |
 | `flight[0].fare`       | `Y`            | fare that was used to book a flight (acc. to airline) |
 | `flight[0].class`      | `Economy`      | class of the ticket                                   |
+| `flight[0].ffn`        | `798179235`    | number of the frequent flyer program                  |
 If you have more than 1 flight in one trip (multi-leg flight or stopover), than supply several flights as `flight[0] flight[1] etc`.
 
 ## iOS Implementation ##
